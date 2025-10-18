@@ -1,9 +1,9 @@
 # http2struct: Go Library for Converting / Binding HTTP Requests to Structs
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/nemre/http2struct.svg)](https://pkg.go.dev/github.com/nemre/http2struct)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nemre/http2struct)](https://goreportcard.com/report/github.com/nemre/http2struct)
+[![Go Reference](https://pkg.go.dev/badge/github.com/emre-onal/http2struct.svg)](https://pkg.go.dev/github.com/emre-onal/http2struct)
+[![Go Report Card](https://goreportcard.com/badge/github.com/emre-onal/http2struct)](https://goreportcard.com/report/github.com/emre-onal/http2struct)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub release](https://img.shields.io/github/release/nemre/http2struct.svg)](https://github.com/nemre/http2struct/releases)
+[![GitHub release](https://img.shields.io/github/release/emre-onal/http2struct.svg)](https://github.com/emre-onal/http2struct/releases)
 
 `http2struct` is a lightweight, zero-dependency Go library that simplifies HTTP request processing by allowing you to easily transfer data from HTTP requests directly into Go structs. The library handles data from multiple sources including headers, URL query parameters, path parameters, form data, file uploads, and JSON body.
 
@@ -34,7 +34,7 @@ This streamlined approach to request binding eliminates boilerplate code and hel
 
 ## Benefits
 
-| Benefits                | Before (using standard net/http)            | After (using nemre/http2struct)                                                                |
+| Benefits                | Before (using standard net/http)            | After (using emre-onal/http2struct)                                                                |
 | ----------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
 | ⌛️ Developer Time      | 😫 Expensive (too much parsing code)        | 🚀 **Faster** (define the struct and leave parsing to http2struct)                             |
 | ♻️ Code Repetition     | 😞 High                                    | 😍 **Lower** (eliminates repetitive request parsing code)                                      |
@@ -46,7 +46,7 @@ This streamlined approach to request binding eliminates boilerplate code and hel
 ## Installation
 
 ```bash
-go get -u github.com/nemre/http2struct
+go get -u github.com/emre-onal/http2struct
 ```
 
 ## Basic Usage

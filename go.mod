@@ -1,3 +1,3 @@
-module github.com/nemre/http2struct
+module github.com/emre-onal/http2struct
 
 go 1.24

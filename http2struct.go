@@ -80,10 +80,10 @@ func Convert(request *http.Request, destination any) error {
 			continue
 		}
 
-		fieldValue.SetZero()
-
 		tag, ok := field.Tag.Lookup("form")
 		if ok && tag != "" && tag != "-" {
+			fieldValue.SetZero()
+
 			if request.PostForm == nil {
 				if err := request.ParseMultipartForm(32 << 20); err != nil {
 					return fmt.Errorf("failed to parse request multipart form: %w", err)
@@ -105,6 +105,8 @@ func Convert(request *http.Request, destination any) error {
 
 		tag, ok = field.Tag.Lookup("file")
 		if ok && tag != "" && tag != "-" && tag != "binary" {
+			fieldValue.SetZero()
+			
 			if field.Type.Kind() != reflect.Pointer && field.Type != reflect.TypeOf(File{}) {
 				return fmt.Errorf("%q type is not supported for %q field", fieldValue.Type().String(), field.Name)
 			}
@@ -153,6 +155,8 @@ func Convert(request *http.Request, destination any) error {
 
 		tag, ok = field.Tag.Lookup("file")
 		if ok && tag == "binary" {
+			fieldValue.SetZero()
+
 			if field.Type.Kind() != reflect.Pointer && field.Type != reflect.TypeOf(File{}) {
 				return fmt.Errorf("%q type is not supported for %q field", fieldValue.Type().String(), field.Name)
 			}
@@ -205,6 +209,8 @@ func Convert(request *http.Request, destination any) error {
 
 		tag, ok = field.Tag.Lookup("header")
 		if ok && tag != "" && tag != "-" {
+			fieldValue.SetZero()
+			
 			v := request.Header.Get(tag)
 
 			if err := convert(fieldValue, field.Type, v); err != nil {
@@ -216,6 +222,8 @@ func Convert(request *http.Request, destination any) error {
 
 		tag, ok = field.Tag.Lookup("query")
 		if ok && tag != "" && tag != "-" {
+			fieldValue.SetZero()
+
 			v := request.URL.Query().Get(tag)
 
 			if err := convert(fieldValue, field.Type, v); err != nil {
@@ -227,6 +235,8 @@ func Convert(request *http.Request, destination any) error {
 
 		tag, ok = field.Tag.Lookup("path")
 		if ok && tag != "" && tag != "-" {
+			fieldValue.SetZero()
+
 			v := request.PathValue(tag)
 
 			if err := convert(fieldValue, field.Type, v); err != nil {
